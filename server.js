@@ -5,6 +5,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = "gemini-2.0-flash";
 
 if (!GEMINI_API_KEY) {
@@ -51,7 +52,7 @@ Format the entire response aesthetically and professionally, like an official sy
         const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=AIzaSyASkunTICEayUrwyarKSgsvRUahJwcSNAM`,
+            `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
             {
                 method: "POST",
                 headers: {
