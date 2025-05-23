@@ -52,7 +52,7 @@ Format the entire response aesthetically and professionally, like an official sy
         const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 
         const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+            `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=' + process.env.GEMINI_API_KEY,
             {
                 method: "POST",
                 headers: {
